@@ -1,0 +1,3 @@
+[submodule "salt/formulas/users-formula"]
+	path = salt/formulas/users-formula
+	url = https://github.com/aidanharris/users-formula

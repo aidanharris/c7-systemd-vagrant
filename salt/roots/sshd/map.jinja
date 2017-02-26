@@ -1,0 +1,11 @@
+{% set sshd = salt['grains.filter_by'] ({
+  'Debian': {
+    'pkg': 'openssh-server',
+    'service': 'sshd'
+  },
+  'RedHat': {
+    'pkg': 'openssh-server',
+    'service': 'sshd'
+  },
+}, grain='os_family',
+) %}
