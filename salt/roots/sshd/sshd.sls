@@ -3,6 +3,8 @@ install_openssh_server:
   pkg.installed:
     - pkgs:
       - {{ sshd.pkg }}
+      - {{ sshd.scp }}
+      - {{ sshd.rsync }}
 {{ sshd.service }}:
   service.running:
     - enable: True
