@@ -5,8 +5,10 @@ ADD salt/conf/minion /etc/salt/minion
 ADD salt/roots /srv/salt
 ADD salt/pillar /srv/pillar
 ADD salt/formulas /srv/formulas
+ADD installed.txt /tmp/installed.txt
 
 RUN salt-call state.apply && \
+    sh -c "cat /tmp/installed.txt | xargs yum install -y " && \
     sed -i '/pam_nologin.so/ s?^?#?' /etc/pam.d/* && \
     yum clean all && \
     rm -rf /var/cache/*/* && \
