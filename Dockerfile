@@ -10,6 +10,7 @@ ADD installed.txt /tmp/installed.txt
 RUN salt-call state.apply && \
     sh -c "cat /tmp/installed.txt | xargs yum install -y " && \
     sed -i '/pam_nologin.so/ s?^?#?' /etc/pam.d/* && \
+    systemctl disable firewalld && \
     yum clean all && \
     rm -rf /var/cache/*/* && \
     rm -rf /tmp/*
