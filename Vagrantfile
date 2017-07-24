@@ -59,7 +59,7 @@ Vagrant.configure("2") do |config|
     docker.create_args = [
       "-d",
       "--rm",
-      "--privileged"
+      "--cap-add=ALL"
     ]
     docker.remains_running = true
     docker.has_ssh = true
